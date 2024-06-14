@@ -50,7 +50,7 @@ public class CheckoutSolution {
             int totalItem = totalObiecteGratis.get(item);
 
             if (cerere.containsKey(item) && cerere.containsKey(freeitem)) {
-                int numFreeItems = cerere.get(freeitem) / totalItem;
+                int numFreeItems = cerere.get(item) / totalItem;
                 int currentFreeItems = cerere.get(freeitem);
                 cerere.put(freeitem, Math.max(0, currentFreeItems - numFreeItems));
             }
@@ -82,7 +82,3 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
-
-
-
-
