@@ -12,6 +12,3 @@ public class HelloSolution {
         System.out.println(h.hello(args[0]));
     }
 }
-
-
-
