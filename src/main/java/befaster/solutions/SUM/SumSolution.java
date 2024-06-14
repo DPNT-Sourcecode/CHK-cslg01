@@ -9,5 +9,9 @@ public class SumSolution {
         return  x+y;
     }
 
+    public static void main(String[] args) {
+        compute
+    }
 }
+
 
