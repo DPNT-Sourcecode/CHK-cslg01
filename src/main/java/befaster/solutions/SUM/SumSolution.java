@@ -14,6 +14,3 @@ public class SumSolution {
         System.out.println(solution.compute(Integer.parseInt(args[0]),Integer.parseInt(args[1])));
     }
 }
-
-
-
