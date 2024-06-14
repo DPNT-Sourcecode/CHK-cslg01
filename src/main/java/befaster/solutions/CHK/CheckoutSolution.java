@@ -18,6 +18,7 @@ public class CheckoutSolution {
         prices.put('C', 20);
         prices.put('D', 15);
         prices.put('E', 40);
+        prices.put('F', 10);
 
         oferteSpeciale = new HashMap<>();
         oferteSpeciale.put('A', new int[][]{{5,200},{3, 130}});
@@ -25,9 +26,11 @@ public class CheckoutSolution {
 
         oferteGratis = new HashMap<>();
         oferteGratis.put('E', 'B');
+        oferteGratis.put('F','F');
 
         totalObiecteGratis = new HashMap<>();
         totalObiecteGratis.put('E', 2);
+        totalObiecteGratis.put('F', 2);
     }
 
     public Integer checkout(String skus) {
@@ -82,3 +85,4 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
+
