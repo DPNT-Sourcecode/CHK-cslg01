@@ -69,7 +69,7 @@ public class CheckoutSolution {
                     int offerCount = offer[0];
                     int offerPrice = offer[1];
 
-                    while (count >= offerCount) {
+                    while (count > offerCount) {
                         total += offerPrice;
                         count -= offerCount;
                     }
@@ -85,4 +85,5 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
+
 
