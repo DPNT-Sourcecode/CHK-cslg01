@@ -70,11 +70,9 @@ public class CheckoutSolution {
                         total += offerPrice;
                         count -= offerCount;
                     }
-                    total += count * price;
                 }
-            } else {
-                total += count * price;
             }
+            total += count * price;
         }
         return total;
     }
@@ -84,6 +82,7 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
+
 
 
 
