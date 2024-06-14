@@ -19,6 +19,7 @@ public class CheckoutSolution {
 
         oferteSpeciale = new HashMap<>();
         oferteSpeciale.put('A', new int[]{3, 130});
+        oferteSpeciale.put('A', new int[]{5, 200});
         oferteSpeciale.put('B', new int[]{2, 45});
         oferteSpeciale.put('E', new int[]{2, 1, 30});
     }
@@ -74,4 +75,5 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
+
 
