@@ -4,7 +4,7 @@ import befaster.runner.SolutionNotImplementedException;
 
 public class HelloSolution {
     public String hello(String friendName) {
-        return "Hello, World!";
+        return "Hello, " + friendName + "!";
     }
 
     public static void main(String[] args) {
@@ -12,5 +12,6 @@ public class HelloSolution {
         System.out.println(h.hello(args[0]));
     }
 }
+
 
 
