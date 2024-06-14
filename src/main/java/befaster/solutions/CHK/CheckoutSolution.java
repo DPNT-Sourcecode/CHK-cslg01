@@ -48,7 +48,7 @@ public class CheckoutSolution {
             char freeitem = e.getValue();
             int totalItem = totalObiecteGratis.get(item);
 
-            if (totalObiecteGratis.containsKey(item) && totalObiecteGratis.containsKey(freeitem)) {
+            if (cerere.containsKey(item) && cerere.containsKey(freeitem)) {
                 int numFreeItems = totalObiecteGratis.get(freeitem) / totalItem;
                 int currentFreeItems = totalObiecteGratis.get(freeitem);
                 totalObiecteGratis.put(freeitem, Math.max(0, currentFreeItems - numFreeItems));
@@ -61,7 +61,6 @@ public class CheckoutSolution {
 
             if (oferteSpeciale.containsKey(c)) {
                 int[][] offers = oferteSpeciale.get(c);
-                int size_offer = offers.length;
                 for (int[] offer : offers) {
                     int offerCount = offer[0];
                     int offerPrice = offer[1];
@@ -84,3 +83,4 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
+
