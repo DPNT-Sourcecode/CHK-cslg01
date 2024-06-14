@@ -29,6 +29,7 @@ public class CheckoutSolution {
         totalObiecteGratis = new HashMap<>();
         totalObiecteGratis.put('E', 2);
     }
+
     public Integer checkout(String skus) {
         if (skus == null) {
             return -1;
@@ -42,7 +43,7 @@ public class CheckoutSolution {
             cerere.put(c, cerere.getOrDefault(c, 0) + 1);
 
         }
-        Integer total = 0;
+        int total = 0;
         for(Map.Entry<Character,Character> e : oferteGratis.entrySet()){
             char item = e.getKey();
             char freeitem = e.getValue();
@@ -83,5 +84,6 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
+
 
 
