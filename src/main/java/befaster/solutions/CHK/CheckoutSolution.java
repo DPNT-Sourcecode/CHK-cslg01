@@ -84,7 +84,3 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
-
-
-
-
