@@ -27,7 +27,7 @@ public class CheckoutSolution {
         oferteGratis.put('E', 'B');
 
         totalObiecteGratis = new HashMap<>();
-        totalObiecteGratis.put('E', 1);
+        totalObiecteGratis.put('E', 2);
     }
     public Integer checkout(String skus) {
         if (skus == null) {
@@ -49,9 +49,9 @@ public class CheckoutSolution {
             int totalItem = totalObiecteGratis.get(item);
 
             if (cerere.containsKey(item) && cerere.containsKey(freeitem)) {
-                int numFreeItems = totalObiecteGratis.get(freeitem) / totalItem;
-                int currentFreeItems = totalObiecteGratis.get(freeitem);
-                totalObiecteGratis.put(freeitem, Math.max(0, currentFreeItems - numFreeItems));
+                int numFreeItems = cerere.get(freeitem) / totalItem;
+                int currentFreeItems = cerere.get(freeitem);
+                cerere.put(freeitem, Math.max(0, currentFreeItems - numFreeItems));
             }
         }
         for (Map.Entry<Character, Integer> e : cerere.entrySet()) {
@@ -83,4 +83,5 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
+
 
