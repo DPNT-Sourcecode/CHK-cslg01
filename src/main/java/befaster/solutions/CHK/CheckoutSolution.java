@@ -7,7 +7,9 @@ import java.util.Map;
 
 public class CheckoutSolution {
     private static final Map<Character, Integer> prices;
-    private static final Map<Character, int[]> oferteSpeciale;
+    private static final Map<Character, int[][]> oferteSpeciale;
+    private static final Map<Character, Character> oferteGratis;
+    private static final Map<Character, Integer> totalObiecteGratis;
 
     static {
         prices = new HashMap<>();
@@ -18,9 +20,14 @@ public class CheckoutSolution {
         prices.put('E', 40);
 
         oferteSpeciale = new HashMap<>();
-        oferteSpeciale.put('A', new int[]{3, 130, 5 , 200});
-        oferteSpeciale.put('B', new int[]{2, 45});
-        oferteSpeciale.put('E', new int[]{2, 1, 30});
+        oferteSpeciale.put('A', new int[][]{{5,200},{3, 130}});
+        oferteSpeciale.put('B', new int[][]{{2, 45}});
+
+        oferteGratis = new HashMap<>();
+        oferteGratis.put('E', 'B');
+
+        totalObiecteGratis = new HashMap<>();
+        totalObiecteGratis.put('E', 1);
     }
     public Integer checkout(String skus) {
         if (skus == null) {
@@ -36,31 +43,34 @@ public class CheckoutSolution {
 
         }
         Integer total = 0;
+        for(Map.Entry<Character,Character> e : oferteGratis.entrySet()){
+            char item = e.getKey();
+            char freeitem = e.getValue();
+            int totalItem = totalObiecteGratis.get(item);
+
+            if (totalObiecteGratis.containsKey(item) && totalObiecteGratis.containsKey(freeitem)) {
+                int numFreeItems = totalObiecteGratis.get(freeitem) / totalItem;
+                int currentFreeItems = totalObiecteGratis.get(freeitem);
+                totalObiecteGratis.put(freeitem, Math.max(0, currentFreeItems - numFreeItems));
+            }
+        }
         for (Map.Entry<Character, Integer> e : cerere.entrySet()) {
             char c = e.getKey();
             int count = e.getValue();
             int price = prices.get(c);
 
             if (oferteSpeciale.containsKey(c)) {
-                int[] offer = oferteSpeciale.get(c);
-                int size_offer = offer.length;
-                if (size_offer == 2) {
+                int[][] offers = oferteSpeciale.get(c);
+                int size_offer = offers.length;
+                for (int[] offer : offers) {
                     int offerCount = offer[0];
                     int offerPrice = offer[1];
 
-                    int numOffers = count/offerCount;
-                    int remain = count % offerCount;
-
-                    total += numOffers * offerPrice + remain * price;
-                } else if (size_offer == 3) {
-                    int offerCount = offer[0];
-                    int offerCountFreeItems = offer[1];
-                    int offerFreeItemPrice = offer[2];
-
-                    int numOffers = count/offerCount;
-                    int remain = count % offerCount;
-
-                    total += numOffers * price + remain * price;
+                    while (count >= offerCount) {
+                        total += offerPrice;
+                        count -= offerCount;
+                    }
+                    total += count * price;
                 }
             } else {
                 total += count * price;
@@ -74,6 +84,7 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
+
 
 
 
