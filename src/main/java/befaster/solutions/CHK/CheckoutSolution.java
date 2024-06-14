@@ -15,10 +15,12 @@ public class CheckoutSolution {
         prices.put('B', 30);
         prices.put('C', 20);
         prices.put('D', 15);
+        prices.put('E', 40);
 
         oferteSpeciale = new HashMap<>();
         oferteSpeciale.put('A', new int[]{3, 130});
         oferteSpeciale.put('B', new int[]{2, 45});
+        oferteSpeciale.put('E', new int[]{2, 1, 30});
     }
     public Integer checkout(String skus) {
         if (skus == null) {
@@ -41,13 +43,25 @@ public class CheckoutSolution {
 
             if (oferteSpeciale.containsKey(c)) {
                 int[] offer = oferteSpeciale.get(c);
-                int offerCount = offer[0];
-                int offerPrice = offer[1];
+                int size_offer = offer.length;
+                if (size_offer == 2) {
+                    int offerCount = offer[0];
+                    int offerPrice = offer[1];
 
-                int numOffers = count/offerCount;
-                int remain = count % offerCount;
+                    int numOffers = count/offerCount;
+                    int remain = count % offerCount;
 
-                total += numOffers * offerPrice + remain * price;
+                    total += numOffers * offerPrice + remain * price;
+                } else if (size_offer == 3) {
+                    int offerCount = offer[0];
+                    int offerCountFreeItems = offer[1];
+                    int offerFreeItemPrice = offer[2];
+
+                    int numOffers = count/offerCount;
+                    int remain = count % offerCount;
+
+                    total += numOffers * price + remain * price;
+                }
             } else {
                 total += count * price;
             }
@@ -60,3 +74,4 @@ public class CheckoutSolution {
         System.out.println(solution.checkout(args[0]));
     }
 }
+
